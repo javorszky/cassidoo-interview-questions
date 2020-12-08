@@ -1,6 +1,7 @@
 package dec72020
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -76,6 +77,136 @@ func Test_reverseString(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			assert.Equal(t, tt.want, reverseString(tt.args.s))
+		})
+	}
+}
+
+func Test_rotateMatrix(t *testing.T) {
+	type args struct {
+		input [][]string
+	}
+	tests := []struct {
+		name string
+		args args
+		want [][]string
+	}{
+		{
+			name: "can rotate matrix",
+			args: args{
+				input: [][]string{
+					{"8", "3", "7", "", "", ""},
+					{"", "5", "1", "6", "", ""},
+					{"", "", "2", "9", "4", ""},
+				},
+			},
+			want: [][]string{
+				{"8", "", ""},
+				{"3", "5", ""},
+				{"7", "1", "2"},
+				{"", "6", "9"},
+				{"", "", "4"},
+				{"", "", ""},
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := rotateMatrix(tt.args.input); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("rotateMatrix() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_addNumbers(t *testing.T) {
+	type args struct {
+		a []string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "adds two two digit numbers",
+			args: args{
+				a: []string{"34", "99"},
+			},
+			want: "133",
+		},
+		{
+			name: "adds lots of one digit numbers where the result is a three digit number",
+			args: args{
+				a: []string{"9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "9"},
+			},
+			want: "108",
+		},
+		{
+			name: "treats empty string as 0 value",
+			args: args{
+				a: []string{"9", "9", "", ""},
+			},
+			want: "18",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equal(t, tt.want, addNumbers(tt.args.a...))
+		})
+	}
+}
+
+func Test_convertEmptyStringsToZeroes(t *testing.T) {
+	type args struct {
+		nums []string
+	}
+	tests := []struct {
+		name string
+		args args
+		want []string
+	}{
+		{
+			name: "replaces empty string with string 0 in slice",
+			args: args{
+				nums: []string{"84", "93", "", "", "", "4"},
+			},
+			want: []string{"84", "93", "0", "0", "0", "4"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equal(t, tt.want, convertEmptyStringsToZeroes(tt.args.nums))
+		})
+	}
+}
+
+func Test_carryInnerOverflow(t *testing.T) {
+	type args struct {
+		iof []string
+	}
+	tests := []struct {
+		name string
+		args args
+		want []string
+	}{
+		{
+			name: "successfully carries over a long innerOverflow",
+			args: args{
+				iof: []string{"12"},
+			},
+			want: []string{"2", "1"},
+		},
+		{
+			name: "successfully carries over a long innerOverflow",
+			args: args{
+				iof: []string{"12", "9", "9", "9", "9", "9"},
+			},
+			want: []string{"2", "0", "0", "0", "0", "0", "1"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equal(t, tt.want, carryInnerOverflow(tt.args.iof))
 		})
 	}
 }
