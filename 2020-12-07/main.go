@@ -15,3 +15,7 @@ import (
 func Task() {
 	fmt.Println("hola")
 }
+
+func stringMultiply(a, b string) string {
+	return "0"
+}
