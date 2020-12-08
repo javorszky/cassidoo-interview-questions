@@ -55,3 +55,27 @@ func Test_stringMultiply(t *testing.T) {
 		})
 	}
 }
+
+func Test_reverseString(t *testing.T) {
+	type args struct {
+		s string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "reverses string",
+			args: args{
+				s: "hello",
+			},
+			want: "olleh",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equal(t, tt.want, reverseString(tt.args.s))
+		})
+	}
+}
