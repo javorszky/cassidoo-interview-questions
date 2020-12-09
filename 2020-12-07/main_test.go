@@ -128,6 +128,13 @@ func Test_addNumbers(t *testing.T) {
 		want string
 	}{
 		{
+			name: "adds two random digit numbers",
+			args: args{
+				a: []string{"34222", "99972661"},
+			},
+			want: "100006883",
+		},
+		{
 			name: "adds two two digit numbers",
 			args: args{
 				a: []string{"34", "99"},

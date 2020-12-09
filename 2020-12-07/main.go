@@ -17,8 +17,9 @@ func Task() {
 	fmt.Println("hola")
 	//stringMultiply("123", "456")
 	//stringMultiply("999", "888")
-	carryInnerOverflow([]string{"12"})
-	//addNumbers([]string{"9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "12"}...)
+	//carryInnerOverflow([]string{"12"})
+	//addNumbers([]string{"9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "12"}...)
+	//addNumbers([]string{"34", "99"}...)
 }
 
 func stringMultiply(a, b string) string {
@@ -92,7 +93,6 @@ func reverseString(s string) string {
 }
 
 func addNumbers(a ...string) string {
-
 	// find out how wide our matrix needs to be.
 	maxLen := 0
 	for _, n := range a {
@@ -116,46 +116,48 @@ func addNumbers(a ...string) string {
 
 	// rotate the matrix so we can deal with addition row by row
 	rotated := rotateMatrix(matrix)
-	overflow := make([]string, 0)
-	overflow = append(overflow, "0")
 
-	for _, row := range rotated {
+	//overflow := make([]string, 0)
+	//overflow = append(overflow, "0")
+	innerOverflow := []string{"0"}
+
+	var sb strings.Builder
+
+	for j, row := range rotated {
 		// each row begins with starting with 0.
-		carry := "0"
-		// each row also starts with a zero inner overflow (ie the overflow that only comes from this column, discarding
-		// the overflow from the previous column(s)
-		innerOverflow := []string{"0"}
+		carry := innerOverflow[0]
+		if len(innerOverflow) > 1 {
+			innerOverflow = innerOverflow[j:]
+		} else {
+			innerOverflow = []string{"0"}
+		}
 
 		// iterate over the numbers to get a grand total, and populate the overflow slice too.
 		for _, col := range convertEmptyStringsToZeroes(row) {
 			// do the thing infinitely until the sum is only one character long!
-			fmt.Printf("sum %s and %s\n", carry, col)
 			carry = sum[carry][col]
-			fmt.Printf("carry is now %s\n", carry)
 
 			if len(carry) == 1 {
 				continue
 			}
 			// if the length of carry is not one, it is two because the sum of two single digit numbers can only
 			// result in a two digit number.
-
-			fmt.Printf("inneroverflow is the sum of %s and %s\n", innerOverflow[0], string(carry[0]))
 			// save the innerOverflow value that comes from the carry.
 			innerOverflow[0] = sum[string(carry[0])][innerOverflow[0]]
 
 			innerOverflow = carryInnerOverflow(innerOverflow)
-
 			carry = string(carry[1])
-
 		}
-		fmt.Printf("inneroverflow: '%#v'\n\n", innerOverflow)
+		sb.WriteString(carry)
 	}
-	//
-	//fmt.Printf("matrix: %#v\n\nrotated: %#v\n", matrix, rotated)
-	//
-	//fmt.Printf("maxlen is %d\n", maxLen)
 
-	return "0"
+	for _, i := range innerOverflow {
+		sb.WriteString(i)
+	}
+
+	result := reverseString(sb.String())
+
+	return result
 }
 
 func convertEmptyStringsToZeroes(nums []string) []string {
