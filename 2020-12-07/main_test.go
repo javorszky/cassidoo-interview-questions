@@ -169,6 +169,15 @@ func Test_addNumbers(t *testing.T) {
 			},
 			want: "0",
 		},
+		{
+			name: "treats all empty strings as 0 value when there's a 0 value present as well",
+			args: args{
+				a: []string{"", "", "0"},
+			},
+			want: "0",
+		},
+
+		//[]string{"0", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -192,6 +201,27 @@ func Test_convertEmptyStringsToZeroes(t *testing.T) {
 				nums: []string{"84", "93", "", "", "", "4"},
 			},
 			want: []string{"84", "93", "0", "0", "0", "4"},
+		},
+		{
+			name: "replaces empty string with string 0 in slice where only the last is a non empty string",
+			args: args{
+				nums: []string{"", "", "", "", "", "4"},
+			},
+			want: []string{"0", "0", "0", "0", "0", "4"},
+		},
+		{
+			name: "replaces empty string with string 0 in slice with only empty strings",
+			args: args{
+				nums: []string{"", "", "", "", "", ""},
+			},
+			want: []string{"0", "0", "0", "0", "0", "0"},
+		},
+		{
+			name: "replaces empty string with string 0 in slice where only the first is non empty string",
+			args: args{
+				nums: []string{"4", "", "", "", "", ""},
+			},
+			want: []string{"4", "0", "0", "0", "0", "0"},
 		},
 	}
 	for _, tt := range tests {

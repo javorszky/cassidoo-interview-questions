@@ -26,6 +26,8 @@ func Task() {
 
 	res2 := stringMultiply(bigA, bigB)
 	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n", bigA, bigB, strings.Repeat("-", len(bigB)), res2)
+
+	addNumbers([]string{"", "", "0"}...)
 }
 
 func stringMultiply(a, b string) string {
@@ -66,7 +68,7 @@ func stringMultiply(a, b string) string {
 	fmt.Printf("rotated multiply: %#v\n", rotated)
 	for ridx, row := range rotated {
 		add := addNumbers(row...)
-		fmt.Printf("\n-----\nadding numbers %v to product %s\n", row, add)
+		fmt.Printf("\n-----\nadding numbers %#v to product %s\n", row, add)
 		if c, ok := overflow[ridx]; ok {
 			fmt.Printf("there is an overflow ridx, so adding add %s and the carry c %s together\n", add, c)
 			add = addNumbers(add, c)
@@ -135,7 +137,7 @@ func addNumbers(a ...string) string {
 	//overflow := make([]string, 0)
 	//overflow = append(overflow, "0")
 	innerOverflow := []string{"0"}
-
+	fmt.Printf("rotated addnums matrix: %#v\n", rotated)
 	var sb strings.Builder
 	for j, row := range rotated {
 		// each row begins with starting with 0.
@@ -148,6 +150,7 @@ func addNumbers(a ...string) string {
 
 		// iterate over the numbers to get a grand total, and populate the overflow slice too.
 		for _, col := range convertEmptyStringsToZeroes(row) {
+			fmt.Printf("the addnum col is %#v\n", col)
 			// do the thing infinitely until the sum is only one character long!
 			carry = sum[carry][col]
 
@@ -170,6 +173,9 @@ func addNumbers(a ...string) string {
 	}
 
 	result := strings.TrimLeft(reverseString(sb.String()), "0")
+	if result == "" {
+		result = "0"
+	}
 
 	return result
 }
