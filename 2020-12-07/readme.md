@@ -27,3 +27,11 @@ And then modeled what I've learned in high school:
 Complete with carrys and everything. The best part is that it can multiple two arbitrarily large string numbers together.
 
 I'm about 100% sure the code can be made better, but it works. And has tests.
+
+## how to use it
+
+You need to have go installed on your computer.
+
+Then clone the repository, and run it with `go run main.go` from the root of the repository. That will run this week's solution.
+
+At some point I'll add interactive cli to the runner too.
