@@ -22,10 +22,10 @@ const (
 // $ “56088”
 func Task() {
 	result := stringMultiply(smolA, smolB)
-	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n", smolA, smolB, strings.Repeat("-", len(smolA)), result)
+	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n\n\n", smolA, smolB, strings.Repeat("-", len(smolA)), result)
 
 	res2 := stringMultiply(bigA, bigB)
-	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n", bigA, bigB, strings.Repeat("-", len(bigB)), res2)
+	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n\n\n", bigA, bigB, strings.Repeat("-", len(bigB)), res2)
 
 	addNumbers([]string{"", "", "0"}...)
 }
@@ -65,32 +65,23 @@ func stringMultiply(a, b string) string {
 	rotated := rotateMatrix(calculator)
 	var result strings.Builder
 	overflow := make(map[int]string, 0)
-	fmt.Printf("rotated multiply: %#v\n", rotated)
+
 	for ridx, row := range rotated {
 		add := addNumbers(row...)
-		fmt.Printf("\n-----\nadding numbers %#v to product %s\n", row, add)
+
 		if c, ok := overflow[ridx]; ok {
-			fmt.Printf("there is an overflow ridx, so adding add %s and the carry c %s together\n", add, c)
 			add = addNumbers(add, c)
-			fmt.Printf("to produce a new add %s\n", add)
 		}
 		add = reverseString(add)
-		fmt.Printf("then reverse it: %s\n", add)
+
 		if len(add) == 1 {
-			fmt.Printf("wrote single digit %s to the string builder\n", add)
 			result.WriteString(add)
 			continue
 		}
-		fmt.Printf("what is add: %s\n", add)
 		result.WriteString(string(add[0]))
-		fmt.Printf("wrote %s to the string builder\n", string(add[0]))
 		for aidx, addDigit := range add[1:] {
-			fmt.Printf("saving digit %s to map at location %d with current value of %s\n", string(addDigit), ridx+1+aidx, overflow[ridx+1+aidx])
 			overflow[ridx+1+aidx] = addNumbers(overflow[ridx+1+aidx], string(addDigit))
-			fmt.Printf("new value for overflow[ridx+1+aidx] is %s\n", overflow[ridx+1+aidx])
 		}
-		fmt.Printf("ridx %d, sum: %s, row: %#v\n", ridx, add, row)
-
 	}
 
 	return strings.TrimLeft(reverseString(result.String()), "0")
@@ -134,10 +125,7 @@ func addNumbers(a ...string) string {
 	// rotate the matrix so we can deal with addition row by row
 	rotated := rotateMatrix(matrix)
 
-	//overflow := make([]string, 0)
-	//overflow = append(overflow, "0")
 	innerOverflow := []string{"0"}
-	fmt.Printf("rotated addnums matrix: %#v\n", rotated)
 	var sb strings.Builder
 	for j, row := range rotated {
 		// each row begins with starting with 0.
@@ -150,7 +138,6 @@ func addNumbers(a ...string) string {
 
 		// iterate over the numbers to get a grand total, and populate the overflow slice too.
 		for _, col := range convertEmptyStringsToZeroes(row) {
-			fmt.Printf("the addnum col is %#v\n", col)
 			// do the thing infinitely until the sum is only one character long!
 			carry = sum[carry][col]
 
