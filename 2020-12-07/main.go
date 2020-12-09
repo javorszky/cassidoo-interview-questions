@@ -5,6 +5,13 @@ import (
 	"strings"
 )
 
+const (
+	smolA = "123"
+	smolB = "456"
+	bigA  = "982379879879874937985893274598347893457893475"
+	bigB  = "11736218823949872398237492387493278947923794723749238"
+)
+
 // This week’s question:
 // Given two non-negative integers n1 and n2 represented as strings, return the product of n1 and n2, also represented
 // as a string. Neither input will start with 0, and don’t just convert it to an integer and do the math that way.
@@ -14,12 +21,11 @@ import (
 // $ stringMultiply(“123”, “456”)
 // $ “56088”
 func Task() {
-	fmt.Println("hola")
-	//stringMultiply("123", "456")
-	//stringMultiply("999", "888")
-	//carryInnerOverflow([]string{"12"})
-	//addNumbers([]string{"9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "9", "12"}...)
-	//addNumbers([]string{"34", "99"}...)
+	result := stringMultiply(smolA, smolB)
+	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n", smolA, smolB, strings.Repeat("-", len(smolA)), result)
+
+	res2 := stringMultiply(bigA, bigB)
+	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n", bigA, bigB, strings.Repeat("-", len(bigB)), res2)
 }
 
 func stringMultiply(a, b string) string {
@@ -56,31 +62,36 @@ func stringMultiply(a, b string) string {
 
 	rotated := rotateMatrix(calculator)
 	var result strings.Builder
-	overflow := make([]string, len(rotated))
-	fmt.Printf("overflow: %#v\n", overflow)
+	overflow := make(map[int]string, 0)
+	fmt.Printf("rotated multiply: %#v\n", rotated)
 	for ridx, row := range rotated {
-		fmt.Printf("ridx %d, row: %#v\n", ridx, row)
-
-		carry := "0"
-		preOverflow := "0"
-		for _, column := range row {
-			s := sum[column][overflow[ridx]]
-
-			// for example s = "12"
-			if len(s) > 1 {
-				// s = "2"
-				s = string(s[1])
-
-				// preoverflow = whatever it was + 1
-				preOverflow = sum[preOverflow][string(s[0])]
-			}
-			carry = sum[s][carry]
+		add := addNumbers(row...)
+		fmt.Printf("\n-----\nadding numbers %v to product %s\n", row, add)
+		if c, ok := overflow[ridx]; ok {
+			fmt.Printf("there is an overflow ridx, so adding add %s and the carry c %s together\n", add, c)
+			add = addNumbers(add, c)
+			fmt.Printf("to produce a new add %s\n", add)
 		}
-		//overflow = preOverflow
-		preOverflow = "0"
-		result.WriteString(carry)
+		add = reverseString(add)
+		fmt.Printf("then reverse it: %s\n", add)
+		if len(add) == 1 {
+			fmt.Printf("wrote single digit %s to the string builder\n", add)
+			result.WriteString(add)
+			continue
+		}
+		fmt.Printf("what is add: %s\n", add)
+		result.WriteString(string(add[0]))
+		fmt.Printf("wrote %s to the string builder\n", string(add[0]))
+		for aidx, addDigit := range add[1:] {
+			fmt.Printf("saving digit %s to map at location %d with current value of %s\n", string(addDigit), ridx+1+aidx, overflow[ridx+1+aidx])
+			overflow[ridx+1+aidx] = addNumbers(overflow[ridx+1+aidx], string(addDigit))
+			fmt.Printf("new value for overflow[ridx+1+aidx] is %s\n", overflow[ridx+1+aidx])
+		}
+		fmt.Printf("ridx %d, sum: %s, row: %#v\n", ridx, add, row)
+
 	}
-	return "0"
+
+	return strings.TrimLeft(reverseString(result.String()), "0")
 }
 
 func reverseString(s string) string {
@@ -99,6 +110,10 @@ func addNumbers(a ...string) string {
 		if len(n) > maxLen {
 			maxLen = len(n)
 		}
+	}
+
+	if maxLen == 0 {
+		return "0"
 	}
 
 	// create the empty matrix with len(a) tall and maxLen wide.
@@ -122,7 +137,6 @@ func addNumbers(a ...string) string {
 	innerOverflow := []string{"0"}
 
 	var sb strings.Builder
-
 	for j, row := range rotated {
 		// each row begins with starting with 0.
 		carry := innerOverflow[0]
@@ -155,7 +169,7 @@ func addNumbers(a ...string) string {
 		sb.WriteString(i)
 	}
 
-	result := reverseString(sb.String())
+	result := strings.TrimLeft(reverseString(sb.String()), "0")
 
 	return result
 }

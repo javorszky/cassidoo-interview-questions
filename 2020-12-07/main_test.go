@@ -155,6 +155,20 @@ func Test_addNumbers(t *testing.T) {
 			},
 			want: "18",
 		},
+		{
+			name: "treats empty string as 0 value",
+			args: args{
+				a: []string{"9", "", ""},
+			},
+			want: "9",
+		},
+		{
+			name: "treats all empty strings as 0 value",
+			args: args{
+				a: []string{"", "", ""},
+			},
+			want: "0",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
