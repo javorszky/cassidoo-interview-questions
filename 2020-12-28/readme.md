@@ -20,7 +20,7 @@ This is remarkably similar to [advent of code 2020 day 20 task 2](https://advent
     2. Otherwise I continue on with the loop.
 1. If I haven't returned when I reach the end of the string and break out the loop, I return -1.
 
-I don't check the string that it's actually only 2s and 0s. All I'm interested in is the "2" immediately followed by "020", so technically a string like "Gabor for president 2020" should also match it.
+I don't check the string that it's actually only 2s and 0s. All I'm interested in is whether there's "2020" in it, so technically a string like "Gabor for president 2020" should also match it.
 
 I also checked for three different implementations, and benchmarked them. The fastest is the `find2020full` with 9.85ns/op.
 /
