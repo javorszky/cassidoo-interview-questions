@@ -23,6 +23,6 @@ This is remarkably similar to [advent of code 2020 day 20 task 2](https://advent
 I don't check the string that it's actually only 2s and 0s. All I'm interested in is whether there's "2020" in it, so technically a string like "Gabor for president 2020" should also match it.
 
 I also checked for three different implementations, and benchmarked them. The fastest is the `find2020full` with 9.85ns/op.
-/
+
 See this email online here: https://buttondown.email/cassidoo/archive/we-are-what-we-repeatedly-do-excellence-then-is/
 
