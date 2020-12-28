@@ -21,13 +21,12 @@ const (
 // $ stringMultiply(“123”, “456”)
 // $ “56088”
 func Task() {
+	fmt.Printf("7th December 2020\n-----------------\n\n")
 	result := stringMultiply(smolA, smolB)
 	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n\n\n", smolA, smolB, strings.Repeat("-", len(smolA)), result)
 
 	res2 := stringMultiply(bigA, bigB)
-	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n\n\n", bigA, bigB, strings.Repeat("-", len(bigB)), res2)
-
-	addNumbers([]string{"", "", "0"}...)
+	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n\n", bigA, bigB, strings.Repeat("-", len(bigB)), res2)
 }
 
 func stringMultiply(a, b string) string {
