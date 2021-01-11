@@ -1,5 +1,6 @@
 # interview questions
 
+* [17th august 2020](2020-08-17/readme.md) - given an unordered list of ints, move all zeroes to the end in O(n) time or less
 * [24th august 2020](2020-08-24/readme.md) - find how many letters there are in a given string
 * [31st august 2020](2020-08-31/readme.md) - given a list of ints representing stock prices, find when to buy and sell for maximum profit
 * [14th september 2020](2020-09-14/readme.md) - given a monotonic increasing array of integers, find the length of the longest fibonacci-like sequence
