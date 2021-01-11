@@ -1,6 +1,7 @@
 package main
 
 import (
+	aug242020 "github.com/javorszky/cassidoo-interview-questions/2020-08-24"
 	aug312020 "github.com/javorszky/cassidoo-interview-questions/2020-08-31"
 	sep142020 "github.com/javorszky/cassidoo-interview-questions/2020-09-14"
 	sep212020 "github.com/javorszky/cassidoo-interview-questions/2020-09-21"
@@ -12,6 +13,7 @@ import (
 )
 
 func main() {
+	aug242020.Task()
 	aug312020.Task()
 	sep142020.Task()
 	sep212020.Task()

@@ -1,6 +1,7 @@
 # interview questions
 
-* [31st august 2020](2020-08-31) - given a list of ints representing stock prices, find when to buy and sell for maximum profit
+* [24th august 2020](2020-08-24/readme.md) - find how many letters there are in a given string
+* [31st august 2020](2020-08-31/readme.md) - given a list of ints representing stock prices, find when to buy and sell for maximum profit
 * [14th september 2020](2020-09-14/readme.md) - given a monotonic increasing array of integers, find the length of the longest fibonacci-like sequence
 * [21st september 2020](2020-09-21/readme.md) - given array of integers representing asteroids, destroy them based on ruleset, and return the final state
 * [28th september 2020](2020-09-28/readme.md) - given people objects with name and slices of pizzas they want to eat and number of slices a pizza can be cut, how many pizzas do we need to order?
