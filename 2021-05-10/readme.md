@@ -14,6 +14,6 @@
 
 ## what I've done
 
-Reused the solution from december 7, 20202 which had has multiply two numbers as strings, which circumvents the whole "integer overflow" issue.
+Reused the solution from [december 7, 2020](../2020-12-07/readme.md) which had has multiply two numbers as strings, which circumvents the whole "integer overflow" issue.
 
 And then turn the numbers into strings, if they aren't strings to begin with, then create a map of the digits, and compare the cubed number, and bail the moment it has a number that isn't in a map.
