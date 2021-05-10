@@ -22,12 +22,11 @@ func sameDigits(n int) bool {
 }
 
 func sameDigitsString(n string) bool {
-	nString := fmt.Sprintf("%d", n)
-	n2String := dec72020.StringMultiply(nString, nString)
-	n3String := dec72020.StringMultiply(n2String, nString)
+	n2String := dec72020.StringMultiply(n, n)
+	n3String := dec72020.StringMultiply(n2String, n)
 
 	set := make(map[string]struct{})
-	for _, s := range nString {
+	for _, s := range n {
 		set[string(s)] = struct{}{}
 	}
 
