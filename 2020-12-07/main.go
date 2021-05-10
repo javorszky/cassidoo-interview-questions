@@ -12,24 +12,24 @@ const (
 	bigB  = "11736218823949872398237492387493278947923794723749238"
 )
 
-// This week’s question:
+// Task will answer this week’s question:
 // Given two non-negative integers n1 and n2 represented as strings, return the product of n1 and n2, also represented
 // as a string. Neither input will start with 0, and don’t just convert it to an integer and do the math that way.
 //
 // Examples:
 //
-// $ stringMultiply(“123”, “456”)
+// $ StringMultiply(“123”, “456”)
 // $ “56088”
 func Task() {
 	fmt.Printf("7th December 2020\n-----------------\n\n")
-	result := stringMultiply(smolA, smolB)
+	result := StringMultiply(smolA, smolB)
 	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n\n\n", smolA, smolB, strings.Repeat("-", len(smolA)), result)
 
-	res2 := stringMultiply(bigA, bigB)
+	res2 := StringMultiply(bigA, bigB)
 	fmt.Printf("the product of these two numbers using only string methods is\n  %s\n* %s\n%s\n  %s\n\n", bigA, bigB, strings.Repeat("-", len(bigB)), res2)
 }
 
-func stringMultiply(a, b string) string {
+func StringMultiply(a, b string) string {
 	// matrix (2d slice) with as many rows as len(b), and as many columns as len(a)+1 +len(b)-1, so len(a) + len(b).
 	calculator := make([][]string, len(b), len(b))
 	for i := range calculator {
