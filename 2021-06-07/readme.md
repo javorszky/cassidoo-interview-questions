@@ -14,3 +14,11 @@
 > $ lonelyNumber(7,7,7)
 > $ 1
 > ```
+
+## Approach
+
+Collect the three numbers into a map with the numbers being key, and the occurence being the value. For each number, increment the value of the map with the key of the number.
+
+Then I start with a number of 1 as a basis, then iterate over the map, and for each key (the numbers passed in), where the value is larger than 1 (ie there's more than one of them), I skip counting. Otherwise I will multiply the previous product with the current number (so the first iteration is going to be 1 (starter product) * whatever number).
+
+At the end I return the product.
