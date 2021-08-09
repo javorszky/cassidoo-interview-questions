@@ -10,3 +10,9 @@
 * [16th november 2020](2020-11-16/readme.md) - find special pairs of indexes where the values match but the indexes are different in a given array of ints
 * [7th december 2020](2020-12-07/readme.md) -multiply two strings of integers without using built in math functions
 * [28th december 2020](2020-12-28/readme.md) - find the occurence of "2020" in a given string of "2"s and "0"s without using the built in string indexOf (or similar) implementation
+* [3rd may 2021](2021-05-03/readme.md) - given a positive or negative real number, round it to the next whole integer closer to zero
+* [10th may 2021](2021-05-10/readme.md) - given an integer n, return true if n^3 and n have the same set of digits.
+* [7th june 2021](2021-06-07/readme.md) - given three numbers, return their product. But, if one of the numbers is the same as another, it does not count: If two numbers are similar, return the lonely number. If all numbers are same, return 1.
+* [14th june 2021](2021-06-14/readme.md) - given a direction, and a number of columns, write a function that outputs an arrow of asterisks
+* [12th july 2021](2021-07-12/readme.md) - given an IPv4 address and a netmask in CIDR notation, return a boolean specifying whether the IP address is inside the given range.
+* [9th august 2021](2021-08-09/readme.md) - given a grid size, and a set of mines (in pairs of rows and columns), generate the [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) grid for that set of mines.
