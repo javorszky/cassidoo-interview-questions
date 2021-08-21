@@ -27,6 +27,16 @@ func Test_pSubString(t *testing.T) {
 			incoming: "hellothererehtolleh",
 			want:     "hellothererehtolleh",
 		},
+		{
+			name:     "longest palindrome of a palindrome of palindromes is the overarching one",
+			incoming: "notapalindromehereaaabbbaaacdcdcdcdcaaabbbaaaefffeaaabbbaaacdcdcdcdcaaabbbaaasomethingother",
+			want:     "aaabbbaaacdcdcdcdcaaabbbaaaefffeaaabbbaaacdcdcdcdcaaabbbaaa",
+		},
+		{
+			name:     "finds palindrome in even length string",
+			incoming: "boabbaba",
+			want:     "abba",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
