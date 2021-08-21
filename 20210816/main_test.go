@@ -37,6 +37,31 @@ func Test_pSubString(t *testing.T) {
 			incoming: "boabbaba",
 			want:     "abba",
 		},
+		{
+			name:     "finds the even palindrome at the beginning of the word",
+			incoming: "aabcdefghijkl",
+			want:     "aa",
+		},
+		{
+			name:     "finds the even palindrome at the end of the string",
+			incoming: "bcdefghijklaa",
+			want:     "aa",
+		},
+		{
+			name:     "finds the odd palindrome at the beginning of the string",
+			incoming: "abacdefghijkl",
+			want:     "aba",
+		},
+		{
+			name:     "finds the odd palindrome at the end of the string",
+			incoming: "cdefghijklaba",
+			want:     "aba",
+		},
+		{
+			name:     "with multiple equal length palindromes, returns the first one",
+			incoming: "abaefghijcdckl",
+			want:     "aba",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -59,7 +59,7 @@ func pSubString(incoming string) string {
 		return fEven(center, origin, distance+1)
 	}
 
-	for i := 1; i < len(stringSlice); i++ {
+	for i := 0; i < len(stringSlice); i++ {
 		// from left
 		md := i*2 + 1
 		mde := i*2 + 2
