@@ -16,6 +16,7 @@ func Tasks() {
 func pSubString(incoming string) string {
 	stringSlice := strings.Split(incoming, "")
 	longest := stringSlice[0]
+	longestLength := len(longest)
 
 	var f func(string, int, int) string
 	var fEven func(string, int, int) string
@@ -59,14 +60,39 @@ func pSubString(incoming string) string {
 	}
 
 	for i := 1; i < len(stringSlice); i++ {
-		try := f(stringSlice[i], i, 1)
-		tryEven := fEven("", i, 1)
-		if len(try) > len(longest) {
-			longest = try
+		// from left
+		md := i*2 + 1
+		mde := i*2 + 2
+
+		// from right
+		mdr := (len(stringSlice)-1-i)*2 + 1
+		mdre := (len(stringSlice) - 1 - i) * 2
+
+		// take the smaller of the two max distances for both odd and even numbered palindromes.
+		if mdr < md {
+			md = mdr
 		}
 
-		if len(tryEven) > len(longest) {
-			longest = tryEven
+		if mdre < mde {
+			mde = mdre
+		}
+
+		// only try making a longer palindrome from current position if the longest palindrome is not longer than the
+		// possible longest palindrome from this position. Ie if we wouldn't find a longer one, bail.
+		if longestLength < md {
+			try := f(stringSlice[i], i, 1)
+			if len(try) > len(longest) {
+				longest = try
+				longestLength = len(longest)
+			}
+		}
+
+		if longestLength < mde {
+			tryEven := fEven("", i, 1)
+			if len(tryEven) > len(longest) {
+				longest = tryEven
+				longestLength = len(longest)
+			}
 		}
 	}
 
