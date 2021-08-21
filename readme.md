@@ -16,3 +16,4 @@
 * [14th june 2021](2021-06-14/readme.md) - given a direction, and a number of columns, write a function that outputs an arrow of asterisks
 * [12th july 2021](2021-07-12/readme.md) - given an IPv4 address and a netmask in CIDR notation, return a boolean specifying whether the IP address is inside the given range.
 * [9th august 2021](2021-08-09/readme.md) - given a grid size, and a set of mines (in pairs of rows and columns), generate the [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) grid for that set of mines.
+* [16th august 2021](2021-08-16/readme.md) - given a string, find the longest palindrome
