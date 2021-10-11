@@ -18,3 +18,5 @@
 * [9th august 2021](2021-08-09/) - given a grid size, and a set of mines (in pairs of rows and columns), generate the [Minesweeper](https://en.wikipedia.org/wiki/Minesweeper_(video_game)) grid for that set of mines.
 * [16th august 2021](2021-08-16/) - given a string, find the longest palindrome
 * [30th august 2021](2021-08-30/) - Write a function to find the longest common prefix string in an array of strings.
+* [13th september 2021](2021-09-13/) - given n pairs of parentheses, generate all possible combinations
+* [11th october 2021](2021-10-11/) - check whether a given number is odious (has odd number of 1s in its binary representation)
