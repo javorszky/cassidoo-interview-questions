@@ -53,6 +53,8 @@ func localPeaks(stream []int) []int {
 
 		// If we're here, the value of the current number is the same as the previous, so store the current index in the
 		// running plateau index for further collection.
+		//
+		// No need to store current value into previous, because they are equal.
 		plateau = append(plateau, i)
 	}
 
