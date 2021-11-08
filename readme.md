@@ -21,3 +21,4 @@
 * [13th september 2021](2021-09-13/) - given n pairs of parentheses, generate all possible combinations
 * [11th october 2021](2021-10-11/) - check whether a given number is odious (has odd number of 1s in its binary representation)
 * [18th october 2021](2021-10-18/) - reorder an array of letters in the order that an array of integers says
+* [8th november 2021](2021/11/08/) - given an array of integers, return the index of each local peak in the array
