@@ -49,3 +49,5 @@ Then I just iterated over the grouping and collected all groups into a slice of 
 I really wanted to make this solution work with slices only. Technically I still think I can, but given that the product of the primes can be rather large for long words, having a slice with hundreds of millions of empty values just so I can put one into an index and not get an out of bounds panic seems worse than using a map.
 
 I also conveniently ignored the situations where the product of the primes for long words / words with a bias towards the end of the alphabet would cause a "this value does not fit into the type" errors and I didn't want to involve Big Math™ here.
+
+Further I also ignored situations where words do not fit into the 26 letters of the latin alphabet, or are capitalised, because I'm lazy, and that's not the point of the exercise in my mind. :)
