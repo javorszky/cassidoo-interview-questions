@@ -1,6 +1,10 @@
 package november222021
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
 var letterCodeToPrime = map[int32]int{
 	97:  2,
@@ -57,6 +61,26 @@ func groupByAnagrams(listOfStuff []string) [][]string {
 	}
 
 	for _, words := range groupedByNumbers {
+		anagramGroups = append(anagramGroups, words)
+	}
+	return anagramGroups
+}
+
+func groupByAnagramsButtStrings(listOfStuff []string) [][]string {
+	anagramGroups := make([][]string, 0)
+	groupedBySortedLetters := make(map[string][]string)
+
+	for _, word := range listOfStuff {
+		letters := strings.Split(word, "")
+		sort.Strings(letters)
+		key := strings.Join(letters, "")
+		if groupedBySortedLetters[key] == nil {
+			groupedBySortedLetters[key] = make([]string, 0)
+		}
+		groupedBySortedLetters[key] = append(groupedBySortedLetters[key], word)
+	}
+
+	for _, words := range groupedBySortedLetters {
 		anagramGroups = append(anagramGroups, words)
 	}
 	return anagramGroups
