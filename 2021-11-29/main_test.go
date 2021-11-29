@@ -218,3 +218,9 @@ func Test_assembler(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkAssembler(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_, _ = assembler("", []int{6, 4, 5, 2, 2, 5, 3})
+	}
+}

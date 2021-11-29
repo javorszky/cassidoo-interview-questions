@@ -5,7 +5,7 @@ import (
 )
 
 func Tasks() {
-	input := "2"
+	input := "23"
 
 	output, _ := phoneLetter(input)
 
