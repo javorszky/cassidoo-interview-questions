@@ -15,3 +15,6 @@
 
 ## Solution
 
+Had a map of numbers -> letters. Did some checking to make sure we're only handling numbers 2-9 inclusive.
+
+Then made a recursive function that shifts the current number off of the list, chooses one of the letters for the current number (and iterates for all of them), and runs the same process for the rest of the numbers, and then collects them in a slice.

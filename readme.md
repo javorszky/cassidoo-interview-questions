@@ -23,3 +23,4 @@
 * [18th october 2021](2021-10-18/) - reorder an array of letters in the order that an array of integers says
 * [8th november 2021](2021-11-08/) - given an array of integers, return the index of each local peak in the array
 * [22nd november 2021](2021-11-22/) - given an array of strings, group the anagrams together in separate arrays
+* [29th november 2021](2021-11-29/) - given a string of numbers, return the possible text combinations a phone can return
