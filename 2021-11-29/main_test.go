@@ -37,6 +37,18 @@ func Test_phoneLetter(t *testing.T) {
 			want:    nil,
 			wantErr: true,
 		},
+		{
+			name:    "passes test with one number",
+			s:       "9",
+			want:    []string{"w", "x", "y", "z"},
+			wantErr: false,
+		},
+		{
+			name:    "passes test with two numbers from the newsletter",
+			s:       "23",
+			want:    []string{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"},
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -197,60 +209,6 @@ func Test_assembler(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := assembler(tt.args.prefix, tt.args.numbers)
-			assert.ElementsMatch(t, tt.want, got)
-			if tt.wantErr {
-				assert.Error(t, err)
-				return
-			}
-			assert.NoError(t, err)
-		})
-	}
-}
-
-func Test_phoneLetter1(t *testing.T) {
-	type args struct {
-		s string
-	}
-	tests := []struct {
-		name    string
-		args    args
-		want    []string
-		wantErr bool
-	}{
-		{
-			name:    "passes test with one number",
-			args:    args{s: "9"},
-			want:    []string{"w", "x", "y", "z"},
-			wantErr: false,
-		},
-		{
-			name:    "passes test with two numbers from the newsletter",
-			args:    args{s: "23"},
-			want:    []string{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"},
-			wantErr: false,
-		},
-		{
-			name:    "fails successfully with bad input (0 in the string)",
-			args:    args{s: "220"},
-			want:    nil,
-			wantErr: true,
-		},
-		{
-			name:    "fails successfully with bad input (1 in the string)",
-			args:    args{s: "220"},
-			want:    nil,
-			wantErr: true,
-		},
-		{
-			name:    "fails successfully with bad input (letter in the string)",
-			args:    args{s: "22a"},
-			want:    nil,
-			wantErr: true,
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got, err := phoneLetter(tt.args.s)
 			assert.ElementsMatch(t, tt.want, got)
 			if tt.wantErr {
 				assert.Error(t, err)
