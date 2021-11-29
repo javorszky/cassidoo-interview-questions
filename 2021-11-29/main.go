@@ -8,7 +8,14 @@ import (
 )
 
 func Tasks() {
+	input := "2"
 
+	output, _ := phoneLetter(input)
+
+	fmt.Printf("29th November 2021\n"+
+		"------------------\n"+
+		"Possible letter combinations for input [%s]\n"+
+		"%v\n\n", input, output)
 }
 
 var numRegex = regexp.MustCompile(`^[2-9]+$`)
@@ -33,7 +40,7 @@ func phoneLetter(s string) ([]string, error) {
 		return nil, fmt.Errorf("parsenumbers failed for some weird reason. This should not have happened: %w", err)
 	}
 
-	return assembler("", numbers), nil
+	return assembler("", numbers)
 }
 
 func parseNumbers(s string) ([]int, error) {
@@ -48,9 +55,27 @@ func parseNumbers(s string) ([]int, error) {
 	return nums, nil
 }
 
-func assembler(prefix string, numbers []int) []string {
+func assembler(prefix string, numbers []int) ([]string, error) {
+	number, rest, err := shift(numbers)
+	if err != nil {
+		return nil, fmt.Errorf("assembler: shift returned error: %w", err)
+	}
+	letters, ok := numberMap[number]
+	if !ok {
+		panic(fmt.Sprintf("fetching the list of letters from the map for number %d failed. This is a catastrophic failure!", number))
+	}
 
-	return nil
+	branch := make([]string, 0)
+	for _, l := range letters {
+		eh, err := assembler(prefix+l, rest)
+		if err != nil {
+			branch = append(branch, prefix+l)
+			continue
+		}
+		branch = append(branch, eh...)
+	}
+
+	return branch, nil
 }
 
 func shift(in []int) (int, []int, error) {

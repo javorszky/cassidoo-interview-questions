@@ -134,3 +134,75 @@ func Test_shift(t *testing.T) {
 		})
 	}
 }
+
+func Test_assembler(t *testing.T) {
+	type args struct {
+		prefix  string
+		numbers []int
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    []string
+		wantErr bool
+	}{
+		{
+			name: "correctly returns slice for number 2",
+			args: args{
+				prefix:  "",
+				numbers: []int{2},
+			},
+			want:    []string{"a", "b", "c"},
+			wantErr: false,
+		},
+		{
+			name: "correctly returns slice for number 9",
+			args: args{
+				prefix:  "",
+				numbers: []int{9},
+			},
+			want:    []string{"w", "x", "y", "z"},
+			wantErr: false,
+		},
+		{
+			name: "correctly returns slice for number 4 with prefix",
+			args: args{
+				prefix:  "x",
+				numbers: []int{4},
+			},
+			want:    []string{"xg", "xh", "xi"},
+			wantErr: false,
+		},
+		{
+			name: "correctly returns slice for numbers 3,5",
+			args: args{
+				prefix:  "",
+				numbers: []int{3, 5},
+			},
+			want:    []string{"dj", "dk", "dl", "ej", "ek", "el", "fj", "fk", "fl"},
+			wantErr: false,
+		},
+		{
+			name: "correctly returns slice for numbers 6,7 with prefix",
+			args: args{
+				prefix:  "yo",
+				numbers: []int{6, 7},
+			},
+			want: []string{"yomp", "yomq", "yomr", "yoms",
+				"yonp", "yonq", "yonr", "yons",
+				"yoop", "yooq", "yoor", "yoos"},
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := assembler(tt.args.prefix, tt.args.numbers)
+			assert.ElementsMatch(t, tt.want, got)
+			if tt.wantErr {
+				assert.Error(t, err)
+				return
+			}
+			assert.NoError(t, err)
+		})
+	}
+}
