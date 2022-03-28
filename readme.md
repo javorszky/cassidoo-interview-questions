@@ -24,3 +24,5 @@
 * [8th november 2021](2021-11-08/) - given an array of integers, return the index of each local peak in the array
 * [22nd november 2021](2021-11-22/) - given an array of strings, group the anagrams together in separate arrays
 * [29th november 2021](2021-11-29/) - given a string of numbers, return the possible text combinations a phone can return
+* [21st march 2022](2022-03-21/) - given a list of times, find the smallest interval between them
+* [28th march 2022](2022-03-28/) - given a string of | and *, how many *s are in closed compartments (have a | on either side of them someplace)
