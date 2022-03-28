@@ -27,3 +27,11 @@ Counting begins the first time I encounter a `|` (hence the `began` flag ), and 
 If I encounter a character that isn't a `*` or `|`, I return an error.
 
 This solution is O(n). The two boundary checks are constant time, then at _worst_, the code would need to iterate over each element of the incoming string.
+
+### Better solution
+
+Step 1 is to walk through the entire string and extract where the `|` are in the string. Save them in a slice. That one is guaranteed to be sorted.
+
+Step 2: for each set of start / end, use this slice of pipe indices as basis. The difference between two of them, minus 1, is how many enclosed items are there.
+
+I think it's still O(n). The other way I can imagine is as I'm stepping through the string, I would need to loop through each index-pair which sounds a lot more work.
