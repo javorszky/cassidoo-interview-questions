@@ -19,3 +19,11 @@
 > ```
 
 ## Solution
+
+Uh, it's a walker. I take in string, do a bunch of error checking like making sure the start index is not negative, the end index is not out of bounds, and then walk along the characters of the string starting at `start` and ending with `end`.
+
+Counting begins the first time I encounter a `|` (hence the `began` flag ), and then I increment a counter for every `*`. On subsequent `|`s I drain the `*` counter into a holder, reset it to zero, and keep on iterating.
+
+If I encounter a character that isn't a `*` or `|`, I return an error.
+
+This solution is O(n). The two boundary checks are constant time, then at _worst_, the code would need to iterate over each element of the incoming string.
