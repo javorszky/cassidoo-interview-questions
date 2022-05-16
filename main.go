@@ -1,7 +1,7 @@
 package main
 
 import (
-	march282022 "github.com/javorszky/cassidoo-interview-questions/2022-03-28"
+	may162022 "github.com/javorszky/cassidoo-interview-questions/2022-05-16"
 )
 
 func main() {
@@ -31,5 +31,6 @@ func main() {
 	//november222021.Tasks()
 	//november292021.Tasks()
 	//march212022.Tasks()
-	march282022.Tasks()
+	//march282022.Tasks()
+	may162022.Tasks()
 }
