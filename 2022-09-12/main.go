@@ -38,7 +38,7 @@ type dimension struct {
 // canContain on a dimension takes another dimension, and returns a bool if the other dimension can fit inside the first
 // one.
 func (d dimension) canContain(other dimension) bool {
-	return d.w-other.w > 0 || d.h-other.h > 0
+	return d.w-other.w > 0 && d.h-other.h > 0
 }
 
 // coordinate describes a point in space. x is the horizontal position, y is the vertical position.
