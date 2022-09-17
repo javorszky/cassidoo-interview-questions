@@ -26,3 +26,7 @@
 * [29th november 2021](2021-11-29/) - given a string of numbers, return the possible text combinations a phone can return
 * [21st march 2022](2022-03-21/) - given a list of times, find the smallest interval between them
 * [28th march 2022](2022-03-28/) - given a string of | and *, how many *s are in closed compartments (have a | on either side of them someplace)
+* [16th may 2022](2022-05-16) - given two integer arrays of size n, return a new array of size n such that n consists of only unique elements and the sum of all its elements is maximum.
+* [30th may 2022](2022-05-30) - function to check whether all chars are unique in a string
+* [5th september 2022](2022-09-05) - write a generator function that generates values as you call the same function again and again
+* [12th september 2022](2022-09-12) - will the dvd logo hit a corner? when will it do so?
