@@ -58,3 +58,40 @@ func Test_fibLike(t *testing.T) {
 		})
 	}
 }
+
+func Test_isItFibLike(t *testing.T) {
+	type args struct {
+		s []uint64
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "fiblike sequence is fiblike",
+			args: args{s: []uint64{1, 1, 2, 3, 5, 8}},
+			want: true,
+		},
+		{
+			name: "non-fiblike sequence is non fiblike",
+			args: args{s: []uint64{1, 2, 4, 9, 34}},
+			want: false,
+		},
+		{
+			name: "short sequence is fiblike",
+			args: args{s: []uint64{5, 2}},
+			want: true,
+		},
+		{
+			name: "nil sequence is fiblike",
+			args: args{s: nil},
+			want: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			assert.Equalf(t, tt.want, isItFibLike(tt.args.s), "isItFibLike(%v)", tt.args.s)
+		})
+	}
+}

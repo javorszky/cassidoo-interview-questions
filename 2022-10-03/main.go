@@ -47,3 +47,17 @@ func fibLike(a, b, n uint64) ([]uint64, error) {
 
 	return seq, nil
 }
+
+func isItFibLike(s []uint64) bool {
+	if len(s) < 3 {
+		return true
+	}
+
+	for i := 2; i < len(s)-1; i++ {
+		if s[i] != s[i-1]+s[i-2] {
+			return false
+		}
+	}
+
+	return true
+}
