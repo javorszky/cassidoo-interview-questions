@@ -31,3 +31,4 @@
 * [5th september 2022](2022-09-05) - write a generator function that generates values as you call the same function again and again
 * [12th september 2022](2022-09-12) - will the dvd logo hit a corner? when will it do so?
 * [26th september 2022](2022-09-26) - function that will attach an ordinal suffix to a positive integer
+* [3rd october 2022](2022-10-03) - function fib-like that takes three numbers, creates a fibonacci sequence using the first two that's as long as the third
