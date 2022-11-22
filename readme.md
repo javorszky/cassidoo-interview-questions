@@ -32,3 +32,4 @@
 * [12th september 2022](2022-09-12) - will the dvd logo hit a corner? when will it do so?
 * [26th september 2022](2022-09-26) - function that will attach an ordinal suffix to a positive integer
 * [3rd october 2022](2022-10-03) - function fib-like that takes three numbers, creates a fibonacci sequence using the first two that's as long as the third
+* [21st november 2022](2022-11-21) - function that prints a line of slashes / backslashes as a vertical squiggle
